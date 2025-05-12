@@ -2,13 +2,20 @@
 #include "taceti.h"
 #include <SDL2/SDL.h>
 #include <stdio.h>
+#include "lista.h"
+#include "api.h"
+
 
 int main(int argc, char *argv[])
 {
+    jugador jug;
+    tLista listaJugadores;
+    crearLista(&listaJugadores);
+    char nombre[50];
     int** mat, entrada = 0;
     mat = (int**)matrizCrear(sizeof(int), 3, 3);
     inicializarMatriz(mat, 3);
-    int modo;
+    int cantJugadores;
     int ganador;
     int turno = 0; // 0 = X, 1 = O
     unsigned char done = 0;
@@ -37,52 +44,92 @@ int main(int argc, char *argv[])
         printf("Seleccione una opcion:\n[1] Jugar\n[2] Ver Ranking\n[3] Salir\n");
         scanf("%d", &entrada);
         fflush(stdin);
+        //int entrada = mostrarMenu(renderer);
 
         switch (entrada) {
             case 1: {
-                    printf("Contra quien queres jugar\n[1] Otro jugador\n[2] Maquina\n");
-                    scanf("%d", &modo);
+                    printf("Ingrese la cantidad de jugadores\n");
+                    scanf("%d", &cantJugadores);
 
+                    int ch;
+                    while ((ch = getchar()) != '\n' && ch != EOF);
+                    for (int i = 0; i < cantJugadores; i++)
+                    {
+                        printf("Ingrese el nombre del jugador %d \n", i + 1);
+                        if (fgets(nombre, sizeof(nombre), stdin) != NULL)
+                        {
+                            nombre[strcspn(nombre, "\n")] = '\0'; // eliminar salto de línea
+                            strcpy(jug.nombre, nombre);
+                            jug.puntaje = 0;
+                            ponerAlComienzo(&listaJugadores, &jug, sizeof(jug));
+                        }
+                        else
+                        {
+                            printf("Error al leer el nombre.\n");
+                        }
+                    }
+
+                    printf("---Jugadores Cargados--- \n");
+                    mostrarLista(&listaJugadores, mostrarJugador);
                     inicializarTablero(3, tableroRect, renderer);
                     renderizarTablero(mat, 3, tableroRect, renderer);
                     turno = 0;
 
-                    while (!done)
+                    tNodo* actual = listaJugadores;
+                    while (actual != NULL)
                     {
-                        while (SDL_PollEvent(&e))
+                        jugador* j = (jugador*)actual->dato;
+
+                        printf("\n--- Turno de %s ---\n", j->nombre);
+                        inicializarMatriz(mat, 3);
+                        inicializarTablero(3, tableroRect, renderer);
+                        renderizarTablero(mat, 3, tableroRect, renderer);
+                        turno = 0;
+                        done = 0;
+
+                        while (!done)
                         {
-                            if (e.type == SDL_QUIT)
-                                done = 1;
-                            else if (modo == 1)
+                            while (SDL_PollEvent(&e))
                             {
-                                ganador = verificarGanador(mat);
-                                done = verificar(ganador, mat);
-                                manejarClick(e, mat, 3, tableroRect, &turno);
-                            }
-                            else if (modo == 2 && turno == 0)
-                            {
-                                manejarClick(e, mat, 3, tableroRect, &turno);
-                                ganador = verificarGanador(mat);
-                                done = verificar(ganador, mat);
-                                if (turno == 1)
+                                if (e.type == SDL_QUIT)
                                 {
+                                    done = 1;
+                                    break;
+                                }
+                                if (turno == 0)
+                                {
+                                    manejarClick(e, mat, 3, tableroRect, &turno);
                                     ganador = verificarGanador(mat);
                                     done = verificar(ganador, mat);
-                                    SDL_Delay(300); // simulamos que piensa
+                                }
+                                if (!done && turno == 1)
+                                {
+                                    SDL_Delay(500); // la máquina "piensa"
                                     jugarMaquina(mat, 3);
                                     turno = 0;
+                                    ganador = verificarGanador(mat);
+                                    done = verificar(ganador, mat);
                                 }
                             }
+
+                            renderizarTablero(mat, 3, tableroRect, renderer);
+                            SDL_Delay(16);
                         }
-                        renderizarTablero(mat, 3, tableroRect, renderer);
-                        SDL_Delay(16);
+                        if(done == 1)
+                            j->puntaje += 3;
+                        else
+                            j->puntaje += 1;
+
+                        actual = actual->sig;
                     }
+                    mostrarLista(&listaJugadores, mostrarJugador);
+                    enviarResultados(&listaJugadores);
                     break;
-}
+            }
 
 
             case 2:
-                // verRanking();
+                hacerGET();
                 break;
 
             case 3:

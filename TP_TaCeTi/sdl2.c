@@ -44,9 +44,21 @@ void renderizarTablero(int** mat, int cf, SDL_Rect fr, SDL_Renderer* render) {
 
 void dibujarX(SDL_Renderer* render, SDL_Rect celda) {
     SDL_SetRenderDrawColor(render, 255, 0, 0, 255);
-    SDL_RenderDrawLine(render, celda.x, celda.y, celda.x + celda.w, celda.y + celda.h);
-    SDL_RenderDrawLine(render, celda.x, celda.y + celda.h, celda.x + celda.w, celda.y);
+    int grosor = 3;
+    int margen = celda.w / 8;  // Margen para que no toque los bordes
+
+    int x1 = celda.x + margen;
+    int y1 = celda.y + margen;
+    int x2 = celda.x + celda.w - margen;
+    int y2 = celda.y + celda.h - margen;
+
+    for (int i = -grosor / 2; i <= grosor / 2; i++) {
+        SDL_RenderDrawLine(render, x1 + i, y1, x2 + i, y2);
+        SDL_RenderDrawLine(render, x1 + i, y2, x2 + i, y1);
+    }
 }
+
+
 
 void dibujarO(SDL_Renderer* render, SDL_Rect celda) {
     SDL_SetRenderDrawColor(render, 0, 0, 255, 255);
@@ -54,12 +66,39 @@ void dibujarO(SDL_Renderer* render, SDL_Rect celda) {
     int cx = celda.x + celda.w / 2;
     int cy = celda.y + celda.h / 2;
 
-    for (int w = 0; w < radio * 2; w++) {
-        for (int h = 0; h < radio * 2; h++) {
-            int dx = radio - w;
-            int dy = radio - h;
-            if ((dx * dx + dy * dy) >= (radio - 1) * (radio - 1) && (dx * dx + dy * dy) <= (radio * radio)) {
-                SDL_RenderDrawPoint(render, cx + dx, cy + dy);
+    int grosor = 3;
+
+    for (int r = radio - grosor; r <= radio; r++) {
+        for (int w = -r; w <= r; w++) {
+            for (int h = -r; h <= r; h++) {
+                if (w * w + h * h >= (r - 1) * (r - 1) && w * w + h * h <= r * r) {
+                    SDL_RenderDrawPoint(render, cx + w, cy + h);
+                }
+            }
+        }
+    }
+}
+
+bool isMouseOver(SDL_Rect rect, int x, int y) {
+    return x >= rect.x && x <= rect.x + rect.w &&
+           y >= rect.y && y <= rect.y + rect.h;
+}
+
+void manejarClick(SDL_Event e, int** mat, int cf, SDL_Rect fr, int* turno) {
+    if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
+        int mouseX = e.button.x;
+        int mouseY = e.button.y;
+
+        int cellWidth = fr.w / cf;
+        int cellHeight = fr.h / cf;
+
+        int col = (mouseX - fr.x) / cellWidth;
+        int fila = (mouseY - fr.y) / cellHeight;
+
+        if (fila >= 0 && fila < cf && col >= 0 && col < cf) {
+            if (mat[fila][col] == 0) {
+                mat[fila][col] = (*turno == 0) ? 1 : 2;
+                *turno = (*turno + 1) % 2;
             }
         }
     }

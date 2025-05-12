@@ -132,25 +132,7 @@ void matrizDestruir(void** mat,int filas)
     free(mat);
 }
 
-void manejarClick(SDL_Event e, int** mat, int cf, SDL_Rect fr, int* turno) {
-    if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
-        int mouseX = e.button.x;
-        int mouseY = e.button.y;
 
-        int cellWidth = fr.w / cf;
-        int cellHeight = fr.h / cf;
-
-        int col = (mouseX - fr.x) / cellWidth;
-        int fila = (mouseY - fr.y) / cellHeight;
-
-        if (fila >= 0 && fila < cf && col >= 0 && col < cf) {
-            if (mat[fila][col] == 0) {
-                mat[fila][col] = (*turno == 0) ? 1 : 2;
-                *turno = (*turno + 1) % 2;
-            }
-        }
-    }
-}
 
 void jugarMaquina(int** mat, int cf) {
     // Inicializar aleatorio solo una vez
@@ -204,9 +186,9 @@ int esEmpate(int** mat) {
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             if (mat[i][j] == 0)
-                return 0; // Todavía hay lugares vacíos
+                return 0;
 
-    return 1; // No hay lugares vacíos y no ganó nadie
+    return 1;
 }
 
 
@@ -221,11 +203,18 @@ int verificar(int ganador, int** mat)
         else if(ganador == 2)
         {
             printf("¡Gano la maquina (O)!\n");
-            done = 1;
+            done = 2;
         }else if(esEmpate(mat)){
             printf("¡Empate!\n");
-            done = 1;
+            done = 3;
         }
     return done;
 }
+
+void mostrarJugador(void *dato)
+{
+    jugador *nombre = (jugador *)dato;
+    printf("Nombre: %s %d\n", nombre->nombre, nombre->puntaje);
+}
+
 
