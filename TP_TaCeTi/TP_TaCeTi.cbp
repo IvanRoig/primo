@@ -32,20 +32,35 @@
 			<Add option="-Wall" />
 			<Add directory="./SDL2/include/SDL2" />
 			<Add directory="./SDL2/include" />
+			<Add directory="D:/Vs Code Proyectos/personal/primo/TP_TaCeTi/curl-8.7.1_2-win64-mingw/include" />
 		</Compiler>
 		<Linker>
 			<Add option="-lSDL2" />
 			<Add option="-lSDL2main" />
+			<Add library="libcurl.dll.a" />
 			<Add directory="./SDL2/lib" />
+			<Add directory="D:/Vs Code Proyectos/personal/primo/TP_TaCeTi/curl-8.7.1_2-win64-mingw/lib" />
 		</Linker>
 		<Unit filename="api.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="api.h" />
+		<Unit filename="arbol.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="arbol.h" />
 		<Unit filename="cJSON.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="cJSON.h" />
+		<Unit filename="config.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="config.h" />
+		<Unit filename="ini.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ini.h" />
 		<Unit filename="lista.c">
 			<Option compilerVar="CC" />
 		</Unit>

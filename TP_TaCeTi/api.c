@@ -31,7 +31,7 @@ void enviarResultados(tLista* lista)
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json);
 
-        // 🔒 Desactiva verificación de certificado (no recomendado para producción)
+        // Desactiva verificación de certificado (no recomendado para producción)
         curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
 
         res = curl_easy_perform(curl);
@@ -73,7 +73,7 @@ void hacerGET() {
     if(curl) {
         curl_easy_setopt(curl, CURLOPT_URL, "https://algoritmos-api.azurewebsites.net/api/TaCTi/puntero");
 
-        // 🔒 Desactiva verificación SSL (opcional)
+        //  Desactiva verificación SSL (opcional)
         curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
 
         // Configura el callback para recibir la respuesta

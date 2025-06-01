@@ -26,7 +26,10 @@ int sacarAlFinal(tLista *l, void* dato, unsigned tam);
 int verUltimo(tLista *l, void* dato, unsigned tam);
 
 int mostrarLista(tLista *l, void (*mostrarJugador)(void*));
+unsigned contarLista(const tLista *l);
 
+// extrae el nodo en la posición pos (0..n-1)
+int sacarEnPos(tLista *l, void *dato, unsigned tam, unsigned pos);
 
 
 

@@ -12,6 +12,11 @@ typedef struct
     int puntaje;
 }jugador;
 
+typedef struct
+{
+    int fila, col;
+} tMovimiento;
+
 //Pueden llegar a servir
 int contarCelulas(int** mat, int filas, int columnas, int fila, int columna);
 void actualizarCelula(int** mat, int contador, int x, int y);
