@@ -1,13 +1,16 @@
 #include "arbol.h"
 #include <string.h>
 #include <stdlib.h>
+#include <limits.h> // Para INT_MAX y INT_MIN
+
+#include "taceti.h" // Asegúrate de incluir esto para verificarGanador y esEmpate
 
 /* -----------------------------------------------------------------
    1) crearNodoJuego
-     - Reserva un tNodoArbol
-     - Reserva un bloque GameInfo, copia *info_src en él
-     - Inicializa izq=der=NULL
-     - Retorna el nodo o NULL si falla malloc
+      - Reserva un tNodoArbol
+      - Reserva un bloque GameInfo, copia *info_src en él
+      - Inicializa izq=der=NULL
+      - Retorna el nodo o NULL si falla malloc
    ----------------------------------------------------------------- */
 tNodoArbol* crearNodoJuego(const GameInfo *info_src)
 {
@@ -20,7 +23,6 @@ tNodoArbol* crearNodoJuego(const GameInfo *info_src)
         return NULL;
     }
 
-    // Copiamos todo el contenido de info_src
     memcpy(nodo->info, info_src, sizeof(GameInfo));
 
     nodo->izq = NULL;
@@ -30,95 +32,70 @@ tNodoArbol* crearNodoJuego(const GameInfo *info_src)
 
 /* -----------------------------------------------------------------
    2) destruirArbolJuego
-     - Versión recursiva (post‐orden) para liberar hijos y hermanos
-     - Patrón:
-         if (raiz == NULL) return;
-         destruirArbolJuego(raiz->izq);
-         destruirArbolJuego(raiz->der);
-         free(raiz->info);
-         free(raiz);
+      - Versión recursiva (post‐orden) para liberar hijos y hermanos
    ----------------------------------------------------------------- */
 void destruirArbolJuego(tNodoArbol *raiz)
 {
     if (!raiz) return;
-
-    // Primero destruyo toda la rama de hijos (izq)
     destruirArbolJuego(raiz->izq);
-    // Luego destruyo la rama de hermanos (der)
     destruirArbolJuego(raiz->der);
-
-    // Después libero el bloque de GameInfo
     free(raiz->info);
-    // Finalmente libero el nodo mismo
     free(raiz);
 }
 
 /* -----------------------------------------------------------------
    3) expandirArbolJuego
       - Si el estado en “info” es terminal (ganador/empate), no crea hijos.
-      - Si no, genera un hijo por cada casilla vacía:
-          . El primer hijo se enlaza en nodo->izq.
-          . Cada hijo sucesivo se enlaza a través de ->der (hermanos).
-      - Una vez creados todos los hijos directos, recorre cada hijo
-        y llama recursivamente para expandirlo.
+      - Si no, genera un hijo por cada casilla vacía.
    ----------------------------------------------------------------- */
 void expandirArbolJuego(tNodoArbol *nodo)
 {
     if (!nodo) return;
     GameInfo *info = (GameInfo*) nodo->info;
 
-    // Construimos un arreglo local de punteros a cada fila del tablero,
-    // para poder llamar a tus funciones comprobar ganador y empate:
+    // Para poder llamar a tus funciones verificarGanador y esEmpate,
+    // necesitamos un int** a partir del tablero del GameInfo.
     int* filas[3];
     for (int i = 0; i < 3; i++) {
         filas[i] = info->tablero[i];
     }
 
     // 1) Verifico si este estado ya es terminal
-    int g = verificarGanador(filas);
-    if (g != 0 || esEmpate(filas)) {
-        // Gana X (1), gana O (2) o empate: no genero hijos
-        return;
+    if (verificarGanador(filas) != 0 || esEmpate(filas)) {
+        return; // Es un estado final, no se expande más.
     }
 
     // 2) No es terminal: generar un hijo por cada casilla vacía.
-    //    El “primer hijo” irá en nodo->izq, los demás se encadenarán por ->der.
-
-    int jugadorActual = info->jugador;         // 1=X o 2=O (quien acaba de mover aquí)
-    int siguienteJugador = 3 - jugadorActual;   // el que mueva en el siguiente nivel
-
     tNodoArbol *ultimoHermano = NULL;
+    int jugadorActual = info->jugador;
+    int siguienteJugador = (jugadorActual == 1) ? 2 : 1;
 
-    // Recorro las 9 casillas
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            if (info->tablero[i][j] == 0) {
-                // 2.1) Construyo un GameInfo para el hijo, copiando tablero e info
+            if (info->tablero[i][j] == 0) { // Si la casilla está libre
+                // 2.1) Construyo un GameInfo para el hijo
                 GameInfo hijoInfo;
                 memcpy(hijoInfo.tablero, info->tablero, sizeof(hijoInfo.tablero));
+
+                // --- ¡CORRECCIÓN CLAVE! ---
+                // La jugada que se prueba es la del JUGADOR ACTUAL (info->jugador),
+                // no la del siguiente.
+                hijoInfo.tablero[i][j] = jugadorActual;
+
+                // El turno en el nodo hijo será del SIGUIENTE jugador.
                 hijoInfo.jugador = siguienteJugador;
                 hijoInfo.filaJugada = i;
                 hijoInfo.colJugada = j;
                 hijoInfo.valor = 0;
 
-                // 2.2) Marco la jugada de “siguienteJugador” en (i,j)
-                hijoInfo.tablero[i][j] = siguienteJugador;
-
-                // 2.3) Creo el nodo hijo
+                // 2.2) Creo y enlazo el nodo hijo
                 tNodoArbol *hijo = crearNodoJuego(&hijoInfo);
-                if (!hijo) {
-                    // En caso de falla de malloc, continuamos sin agregar este hijo
-                    continue;
-                }
+                if (!hijo) continue;
 
-                // 2.4) Enlazo el hijo en la lista de hijos de “nodo”
                 if (nodo->izq == NULL) {
-                    // Primer hijo
                     nodo->izq = hijo;
                     ultimoHermano = hijo;
-                }
-                else {
-                    // Lo conecto como hermano derecho del último hijo
+                } else {
                     ultimoHermano->der = hijo;
                     ultimoHermano = hijo;
                 }
@@ -126,137 +103,122 @@ void expandirArbolJuego(tNodoArbol *nodo)
         }
     }
 
-    // 3) Ahora recorro recursivamente cada hijo directo y lo expando
+    // 3) Expando recursivamente cada hijo generado
     tNodoArbol *cursor = nodo->izq;
     while (cursor) {
         expandirArbolJuego(cursor);
-        cursor = cursor->der;  // siguiente hermano
+        cursor = cursor->der;
     }
 }
 
+
 /* -----------------------------------------------------------------
    4) minimaxArbolJuego (post‐orden):
-      - Si el nodo es terminal (ganador/empate), asigna valor = +10/-10/0.
-      - Si no, recorre cada hijo (izq->der) recursivamente, luego:
-          . Si info->jugador == 1 (X), busca el MÁXIMO valor entre hijos
-          . Si info->jugador == 2 (O), busca el MÍNIMO valor entre hijos
-        y asigna ese resultado a info->valor.
-      - Retorna info->valor
+      - Si el nodo es terminal, asigna valor (+10, -10, 0).
+      - Si no, calcula el valor basado en los hijos (MAX si es turno de 'O', MIN si es de 'X').
    ----------------------------------------------------------------- */
 int minimaxArbolJuego(tNodoArbol *nodo)
 {
     if (!nodo) return 0;
     GameInfo *info = (GameInfo*) nodo->info;
 
-    // Construimos el arreglo de punteros a fila para llamar a tus funciones
+    // Creamos un int** para usar las funciones de verificación
     int* filas[3];
     for (int i = 0; i < 3; i++) {
         filas[i] = info->tablero[i];
     }
 
-    // 1) Caso base: si hay ganador o empate, asigno valor directamente
+    // 1) Caso base: el nodo es terminal (hay un resultado final)
     int g = verificarGanador(filas);
-    if (g == 2) {
-        info->valor = +10;  // O ganó
-        return info->valor;
-    }
-    if (g == 1) {
-        info->valor = -10;  // X ganó
-        return info->valor;
-    }
-    if (esEmpate(filas)) {
-        info->valor = 0;    // Empate
-        return info->valor;
-    }
+    if (g == 2) { info->valor = 10; return info->valor; } // Gana O (máquina)
+    if (g == 1) { info->valor = -10; return info->valor; } // Gana X (humano)
+    if (esEmpate(filas)) { info->valor = 0; return info->valor; } // Empate
 
-    // 2) No es hoja: recorro hijos en post‐orden
+    // Si no tiene hijos, es una hoja del árbol. Su valor ya fue calculado arriba.
+    if (!nodo->izq) return info->valor;
+
+    // 2) Caso recursivo: no es terminal. Primero, calculamos el valor de todos los hijos.
     tNodoArbol *hijo = nodo->izq;
     while (hijo) {
         minimaxArbolJuego(hijo);
         hijo = hijo->der;
     }
 
-    // 3) Según “info->jugador” decido si debo MAXIMIZAR o MINIMIZAR
-    int mejor;
-    hijo = nodo->izq;
-    if (info->jugador == 1) {
-        // X busca el MÁXIMO
-        mejor = -100000;
+    // 3) Ahora, calculamos el valor del NODO ACTUAL basado en los hijos.
+    hijo = nodo->izq; // Reiniciamos el puntero al primer hijo
+
+    if (info->jugador == 2) { // Es el turno de 'O' (máquina), el jugador MAXIMIZADOR
+        int mejorValor = INT_MIN;
         while (hijo) {
             GameInfo *hinfo = (GameInfo*) hijo->info;
-            if (hinfo->valor > mejor) {
-                mejor = hinfo->valor;
+            if (hinfo->valor > mejorValor) {
+                mejorValor = hinfo->valor;
             }
             hijo = hijo->der;
         }
-    } else {
-        // O busca el MÍNIMO
-        mejor = +100000;
+        info->valor = mejorValor;
+    } else { // Es el turno de 'X' (humano), el jugador MINIMIZADOR
+        int peorValor = INT_MAX;
         while (hijo) {
             GameInfo *hinfo = (GameInfo*) hijo->info;
-            if (hinfo->valor < mejor) {
-                mejor = hinfo->valor;
+            if (hinfo->valor < peorValor) {
+                peorValor = hinfo->valor;
             }
             hijo = hijo->der;
         }
+        info->valor = peorValor;
     }
 
-    info->valor = mejor;
     return info->valor;
 }
 
+
 /* -----------------------------------------------------------------
    5) elegirMejorParaO:
-      - Entre los hijos directos de “raiz” (raiz->izq y sus hermanos),
-        busca el que tenga info->valor mínimo (mejor para O).
-      - Retorna NULL si raiz->izq es NULL.
+      - Entre los hijos directos de “raiz”, busca el que tenga el valor MÁXIMO.
+      - Esto representa la mejor jugada para 'O' (la máquina).
    ----------------------------------------------------------------- */
 tNodoArbol* elegirMejorParaO(tNodoArbol *raiz)
 {
-    if (!raiz) return NULL;
-    tNodoArbol *hijo = raiz->izq;
-    if (!hijo) return NULL;
+    if (!raiz || !raiz->izq) return NULL;
 
-    tNodoArbol *mejor = hijo;
-    GameInfo *gmejor = (GameInfo*) hijo->info;
-    int minVal = gmejor->valor;
+    tNodoArbol *mejorJugadaNodo = NULL;
+    int mejorValor = INT_MIN;
 
-    hijo = hijo->der;
-    while (hijo) {
-        GameInfo *hinfo = (GameInfo*) hijo->info;
-        if (hinfo->valor < minVal) {
-            minVal = hinfo->valor;
-            mejor = hijo;
+    tNodoArbol *hijoActual = raiz->izq;
+    while (hijoActual) {
+        GameInfo *hinfoActual = (GameInfo*) hijoActual->info;
+        // 'O' (máquina) busca maximizar su puntuación. Elige el hijo con el valor más alto.
+        if (hinfoActual->valor > mejorValor) {
+            mejorValor = hinfoActual->valor;
+            mejorJugadaNodo = hijoActual;
         }
-        hijo = hijo->der;
+        hijoActual = hijoActual->der;
     }
-    return mejor;
+    return mejorJugadaNodo;
 }
 
 /* -----------------------------------------------------------------
    6) elegirPeorParaO:
-      - Entre los hijos directos de “raiz”, busca el que tenga el valor máximo
-        (peor para O, mejor para X).
-      - Retorna NULL si no hay hijos.
+      - Entre los hijos directos de “raiz”, busca el que tenga el valor MÍNIMO.
+      - Esto representa la peor jugada para 'O' (modo fácil).
    ----------------------------------------------------------------- */
 tNodoArbol* elegirPeorParaO(tNodoArbol *raiz)
 {
-    if (!raiz) return NULL;
-    tNodoArbol *hijo = raiz->izq;
-    if (!hijo) return NULL;
+    if (!raiz || !raiz->izq) return NULL;
 
-    tNodoArbol *peor = hijo;
-    GameInfo *gpeor = (GameInfo*) hijo->info;
-    int maxVal = gpeor->valor;
+    tNodoArbol *peorJugadaNodo = NULL;
+    int peorValor = INT_MAX;
 
-    hijo = hijo->der;
-    while (hijo) {
-        GameInfo *hinfo = (GameInfo*) hijo->info;
-        if (hinfo->valor > maxVal) {
-            maxVal = hinfo->valor;
-            peor = hijo;
+    tNodoArbol *hijoActual = raiz->izq;
+    while (hijoActual) {
+        GameInfo *hinfoActual = (GameInfo*) hijoActual->info;
+        // Para jugar "mal", 'O' elige la jugada que le da el peor resultado (el valor más bajo).
+        if (hinfoActual->valor < peorValor) {
+            peorValor = hinfoActual->valor;
+            peorJugadaNodo = hijoActual;
         }
-        hijo = hijo->der;
+        hijoActual = hijoActual->der;
     }
-    return peor;
+    return peorJugadaNodo;
 }

@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
                 {
                     printf("\n--- Partida %d de %s ---\n", p + 1, jugActual.nombre);
                     inicializarMatriz(mat, 3);
-                    inicializarTablero(3, tableroRect, renderer);
+                    //inicializarTablero(3, tableroRect, renderer);
                     renderizarTablero(mat, 3, tableroRect, renderer);
 
                     turno = rand() % 2;
@@ -133,13 +133,12 @@ int main(int argc, char *argv[])
                             else
                             {
                                 SDL_Delay(200);
-
                                 GameInfo rootInfo;
                                 for (int i = 0; i < 3; i++)
                                     for (int j = 0; j < 3; j++)
                                         rootInfo.tablero[i][j] = mat[i][j];
+                                rootInfo.jugador = 2; // La máquina es el jugador 2 ('O')
 
-                                rootInfo.jugador = (turno == 1) ? 1 : 2;
                                 rootInfo.filaJugada = -1;
                                 rootInfo.colJugada = -1;
                                 rootInfo.valor = 0;

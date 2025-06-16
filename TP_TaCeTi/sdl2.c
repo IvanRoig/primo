@@ -4,8 +4,6 @@ void inicializarTablero(int cf, SDL_Rect fr, SDL_Renderer* render) {
     int cellW = fr.w / cf;
     int cellH = fr.h / cf;
 
-    SDL_SetRenderDrawColor(render, 255, 255, 255, 255); // Blanco
-    SDL_RenderClear(render);
 
     SDL_SetRenderDrawColor(render, 0, 0, 0, 255); // Negro
 
@@ -13,10 +11,8 @@ void inicializarTablero(int cf, SDL_Rect fr, SDL_Renderer* render) {
         SDL_RenderDrawLine(render, fr.x + i * cellW, fr.y, fr.x + i * cellW, fr.y + fr.h);
         SDL_RenderDrawLine(render, fr.x, fr.y + i * cellH, fr.x + fr.w, fr.y + i * cellH);
     }
-
-    SDL_RenderPresent(render);
 }
-
+/*
 void renderizarTablero(int** mat, int cf, SDL_Rect fr, SDL_Renderer* render) {
     inicializarTablero(cf, fr, render); // Redibuja líneas
     int cellW = fr.w / cf;
@@ -41,22 +37,54 @@ void renderizarTablero(int** mat, int cf, SDL_Rect fr, SDL_Renderer* render) {
 
     SDL_RenderPresent(render);
 }
+*/
+void renderizarTablero(int** mat, int cf, SDL_Rect fr, SDL_Renderer* render) {
+    // 1. Limpiar la pantalla con un color de fondo (blanco)
+    SDL_SetRenderDrawColor(render, 255, 255, 255, 255);
+    SDL_RenderClear(render);
+
+    // 2. Dibujar la grilla del tablero
+    inicializarTablero(cf, fr, render);
+
+    // 3. Dibujar todas las fichas (X y O) que estén en la matriz
+    int cellW = fr.w / cf;
+    int cellH = fr.h / cf;
+
+    for (int fila = 0; fila < cf; fila++) {
+        for (int col = 0; col < cf; col++) {
+            if (mat[fila][col] != 0) {
+                SDL_Rect celda = { fr.x + col * cellW, fr.y + fila * cellH, cellW, cellH };
+                if (mat[fila][col] == 1) {
+                    dibujarX(render, celda);
+                } else {
+                    dibujarO(render, celda);
+                }
+            }
+        }
+    }
+
+    // 4. Presentar el cuadro final y completo en la pantalla.
+    // Esta es la ÚNICA llamada a SDL_RenderPresent por cada cuadro.
+    SDL_RenderPresent(render);
+}
 
 void dibujarX(SDL_Renderer* render, SDL_Rect celda) {
-    SDL_SetRenderDrawColor(render, 255, 0, 0, 255);
+    SDL_SetRenderDrawColor(render, 255, 0, 0, 255); // Rojo para la X
     int grosor = 3;
-    int margen = celda.w / 8;  // Margen para que no toque los bordes
+    int margen = celda.w / 8;
 
     int x1 = celda.x + margen;
     int y1 = celda.y + margen;
     int x2 = celda.x + celda.w - margen;
     int y2 = celda.y + celda.h - margen;
 
+    // Dibuja las dos líneas de la X
     for (int i = -grosor / 2; i <= grosor / 2; i++) {
         SDL_RenderDrawLine(render, x1 + i, y1, x2 + i, y2);
         SDL_RenderDrawLine(render, x1 + i, y2, x2 + i, y1);
     }
 }
+
 
 
 
