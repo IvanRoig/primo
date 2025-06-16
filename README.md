@@ -40,6 +40,35 @@ seguir estas instrucciones:
 
 ---
 
+## Modificar archivo de configuración
+
+Si quieres cambiar la URL de la API, la clave, el modo de juego o el número de partidas:
+
+1. Abre el archivo `config.txt` que está en la raíz del proyecto.  
+2. Edita la **Línea 1** para poner la nueva URL y la nueva clave, separadas por `|`.
+```text
+https://nueva-api.example.com/endpoint | nuevaClave
+```
+4. 3. Edita la **Línea 2** para seleccionar el modo de juego deseado:  
+- `FACIL`  
+- `INTERMEDIO`  
+- `IMPOSIBLE`  
+Por ejemplo:
+```text
+INTERMEDIO
+```
+4. Edita la **Línea 3** para cambiar cuántas partidas jugará cada jugador:
+```text
+5
+```
+6. Guarda y cierra el archivo.  
+7. Vuelve a ejecutar el programa y verifica en consola que aparezca la nueva configuración:
+```text
+Modo: INTERMEDIO Partidas/PJ: 5
+```
+
+---
+
 ## Juego
 Una vez inicializado el juego, se abren dos ventanas, la consola y el juego en SDL2.  
 Desde la consola se puede visualizar un menú en el cual tenemos 3 opciones:
