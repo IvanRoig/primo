@@ -2,8 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <limits.h> // Para INT_MAX y INT_MIN
-
-#include "taceti.h" // Asegúrate de incluir esto para verificarGanador y esEmpate
+#include "taceti.h"
 
 /* -----------------------------------------------------------------
    1) crearNodoJuego
@@ -53,7 +52,7 @@ void expandirArbolJuego(tNodoArbol *nodo)
     if (!nodo) return;
     GameInfo *info = (GameInfo*) nodo->info;
 
-    // Para poder llamar a tus funciones verificarGanador y esEmpate,
+    // Para poder llamar a verificarGanador y esEmpate,
     // necesitamos un int** a partir del tablero del GameInfo.
     int* filas[3];
     for (int i = 0; i < 3; i++) {
@@ -77,9 +76,7 @@ void expandirArbolJuego(tNodoArbol *nodo)
                 GameInfo hijoInfo;
                 memcpy(hijoInfo.tablero, info->tablero, sizeof(hijoInfo.tablero));
 
-                // --- ¡CORRECCIÓN CLAVE! ---
-                // La jugada que se prueba es la del JUGADOR ACTUAL (info->jugador),
-                // no la del siguiente.
+                // La jugada que se prueba es la del JUGADOR ACTUAL (info->jugador)
                 hijoInfo.tablero[i][j] = jugadorActual;
 
                 // El turno en el nodo hijo será del SIGUIENTE jugador.
@@ -131,7 +128,7 @@ int minimaxArbolJuego(tNodoArbol *nodo)
     // 1) Caso base: el nodo es terminal (hay un resultado final)
     int g = verificarGanador(filas);
     if (g == 2) { info->valor = 10; return info->valor; } // Gana O (máquina)
-    if (g == 1) { info->valor = -10; return info->valor; } // Gana X (humano)
+    if (g == 1) { info->valor = -10; return info->valor; } // Gana X (jugador)
     if (esEmpate(filas)) { info->valor = 0; return info->valor; } // Empate
 
     // Si no tiene hijos, es una hoja del árbol. Su valor ya fue calculado arriba.

@@ -5393,7 +5393,7 @@
 	"stdlib.h"
 	"lista.h"
 
-1748725309 source:d:\vs code proyectos\personal\primo\tp_taceti\cjson.c
+1750101849 source:d:\vs code proyectos\personal\primo\tp_taceti\cjson.c
 	<string.h>
 	<stdio.h>
 	<math.h>
@@ -5404,26 +5404,26 @@
 	<locale.h>
 	"cJSON.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\cjson.h
+1750101849 d:\vs code proyectos\personal\primo\tp_taceti\cjson.h
 	<stddef.h>
 
-1748731322 source:d:\vs code proyectos\personal\primo\tp_taceti\lista.c
+1750105153 source:d:\vs code proyectos\personal\primo\tp_taceti\lista.c
 	"lista.h"
 
-1748730446 d:\vs code proyectos\personal\primo\tp_taceti\lista.h
+1750101850 d:\vs code proyectos\personal\primo\tp_taceti\lista.h
 	<string.h>
 	<stdlib.h>
 	<stdio.h>
-	"taceti.h"
 
-1748736502 d:\vs code proyectos\personal\primo\tp_taceti\taceti.h
+1750105335 d:\vs code proyectos\personal\primo\tp_taceti\taceti.h
 	<time.h>
 	<stdio.h>
 	<stdlib.h>
 	<unistd.h>
 	"sdl2.h"
+	"lista.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2.h
+1750101850 d:\vs code proyectos\personal\primo\tp_taceti\sdl2.h
 	<time.h>
 	<stdio.h>
 	<stdlib.h>
@@ -5432,12 +5432,12 @@
 	<stdbool.h>
 	<SDL.h>
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_main.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_stdinc.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -5469,12 +5469,12 @@
 	<stdio.h>
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_config.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 	<winsdkver.h>
 	<sdkddkver.h>
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_platform.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_platform.h
 	<AvailabilityMacros.h>
 	<TargetConditionals.h>
 	<TargetConditionals.h>
@@ -5482,11 +5482,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\begin_code.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\begin_code.h
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\close_code.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\close_code.h
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -5524,13 +5524,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_assert.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_assert.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_atomic.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_atomic.h
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -5538,7 +5538,7 @@
 	<mbarrier.h>
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_audio.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -5548,12 +5548,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_error.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_endian.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_endian.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<endian.h>
@@ -5562,13 +5562,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_mutex.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_thread.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_atomic.h"
@@ -5579,18 +5579,18 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_rwops.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_clipboard.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_clipboard.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_cpuinfo.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -5612,7 +5612,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_events.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -5626,7 +5626,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_video.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -5634,13 +5634,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_pixels.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_pixels.h
 	"SDL_stdinc.h"
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_rect.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_rect.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -5648,7 +5648,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_surface.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_surface.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -5657,11 +5657,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_blendmode.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_blendmode.h
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_keyboard.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keycode.h"
@@ -5669,21 +5669,21 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_keycode.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_scancode.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_scancode.h
 	"SDL_stdinc.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_mouse.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_joystick.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_guid.h"
@@ -5691,13 +5691,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_guid.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_guid.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_gamecontroller.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_gamecontroller.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
@@ -5706,17 +5706,17 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_sensor.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_sensor.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_quit.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_gesture.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_gesture.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -5724,70 +5724,70 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_touch.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_touch.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_filesystem.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_filesystem.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_haptic.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_haptic.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_hidapi.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_hidapi.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_hints.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_hints.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_loadso.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_log.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_log.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_messagebox.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_messagebox.h
 	"SDL_stdinc.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_metal.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_metal.h
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_power.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_power.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_render.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_render.h
 	"SDL_stdinc.h"
 	"SDL_rect.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_shape.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_shape.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -5796,7 +5796,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_system.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_system.h
 	"SDL_stdinc.h"
 	"SDL_keyboard.h"
 	"SDL_render.h"
@@ -5804,42 +5804,44 @@
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_timer.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_timer.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_version.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_locale.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_locale.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_misc.h
+1750101852 d:\vs code proyectos\personal\primo\tp_taceti\sdl2\include\sdl2\sdl_misc.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1748725309 source:d:\vs code proyectos\personal\primo\tp_taceti\sdl2.c
+1750105530 source:d:\vs code proyectos\personal\primo\tp_taceti\sdl2.c
 	"sdl2.h"
 
-1748725992 source:d:\vs code proyectos\personal\primo\tp_taceti\api.c
+1750105039 source:d:\vs code proyectos\personal\primo\tp_taceti\api.c
 	"api.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\api.h
+1750103594 d:\vs code proyectos\personal\primo\tp_taceti\api.h
 	<curl/curl.h>
 	"cJSON.h"
 	"stdio.h"
 	"stdlib.h"
 	"lista.h"
+	"taceti.h"
+	"config.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\curl.h
+1750101851 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\curl.h
 	"curlver.h"
 	"system.h"
 	<stdio.h>
@@ -5861,9 +5863,9 @@
 	"mprintf.h"
 	"typecheck-gcc.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\curlver.h
+1750101851 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\curlver.h
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\system.h
+1750101851 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\system.h
 	<ConditionalMacros.h>
 	<inttypes.h>
 	<inttypes.h>
@@ -5871,31 +5873,31 @@
 	<sys/socket.h>
 	<sys/poll.h>
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\easy.h
+1750101851 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\easy.h
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\multi.h
+1750101851 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\multi.h
 	"curl.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\urlapi.h
+1750101851 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\urlapi.h
 	"curl.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\options.h
+1750101851 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\options.h
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\header.h
+1750101851 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\header.h
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\websockets.h
+1750101851 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\websockets.h
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\mprintf.h
+1750101851 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\mprintf.h
 	<stdarg.h>
 	<stdio.h>
 	"curl.h"
 
-1748725309 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\typecheck-gcc.h
+1750101851 d:\vs code proyectos\personal\primo\tp_taceti\curl-8.7.1_2-win64-mingw\include\curl\typecheck-gcc.h
 
-1748736488 source:d:\vs code proyectos\personal\primo\tp_taceti\taceti.c
+1750105621 source:d:\vs code proyectos\personal\primo\tp_taceti\taceti.c
 	"taceti.h"
 
-1748738008 source:d:\vs code proyectos\personal\primo\tp_taceti\main.c
+1750105161 source:d:\vs code proyectos\personal\primo\tp_taceti\main.c
 	"sdl2.h"
 	"taceti.h"
 	<SDL2/SDL.h>
@@ -5907,15 +5909,14 @@
 	"config.h"
 	"arbol.h"
 
-1748735746 source:d:\vs code proyectos\personal\primo\tp_taceti\config.c
+1750105039 source:d:\vs code proyectos\personal\primo\tp_taceti\config.c
 	"config.h"
-	"ini.h"
+	<stdio.h>
 	<string.h>
 	<stdlib.h>
-	<stdio.h>
 	<ctype.h>
 
-1748734502 d:\vs code proyectos\personal\primo\tp_taceti\config.h
+1750103988 d:\vs code proyectos\personal\primo\tp_taceti\config.h
 
 1748734267 d:\vs code proyectos\personal\primo\tp_taceti\ini.h
 	<stdio.h>
@@ -5928,39 +5929,71 @@
 	<stddef.h>
 	<stdlib.h>
 
-1748736890 source:d:\vs code proyectos\personal\primo\tp_taceti\arbol.c
+1750105039 source:d:\vs code proyectos\personal\primo\tp_taceti\arbol.c
 	"arbol.h"
 	<string.h>
 	<stdlib.h>
+	<limits.h>
+	"taceti.h"
 
-1748736654 d:\vs code proyectos\personal\primo\tp_taceti\arbol.h
+1750101849 d:\vs code proyectos\personal\primo\tp_taceti\arbol.h
 	"taceti.h"
 
 1750025530 source:c:\users\felid\downloads\primo\tp_taceti\api.c
 	"api.h"
 
-1750025530 c:\users\felid\downloads\primo\tp_taceti\api.h
+1750028540 D
+	"taceti.h"
+	"lista.h"
+
+1750085461 c:\users\felid\downloads\primo\tp_taceti\api.h
 	<curl/curl.h>
 	"cJSON.h"
 	"stdio.h"
 	"stdlib.h"
 	"lista.h"
-
-1750025530 c:\users\felid\downloads\primo\tp_taceti\cjson.h
-	<stddef.h>
-
-1750025530 c:\users\felid\downloads\primo\tp_taceti\lista.h
-	<string.h>
-	<stdlib.h>
-	<stdio.h>
 	"taceti.h"
 
-1750025530 c:\users\felid\downloads\primo\tp_taceti\taceti.h
+1750025530 45eb4d04b3f65fbd1b2f0c20a73f990256f14
+	<curl/curl.h>
+	"cJSON.h"
+	"stdio.h"
+	"stdlib.h"
+	"lista.h"
 	<time.h>
 	<stdio.h>
 	<stdlib.h>
 	<unistd.h>
 	"sdl2.h"
+	"sdl2.h"
+	"taceti.h"
+	<SDL2/SDL.h>
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"lista.h"
+	"api.h"
+	"config.h"
+	"arbol.h"
+	"taceti.h"
+
+1750025530 
+
+1750025530 c:\users\felid\downloads\primo\tp_taceti\cjson.h
+	<stddef.h>
+
+1750085424 c:\users\felid\downloads\primo\tp_taceti\lista.h
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+
+1750100761 c:\users\felid\downloads\primo\tp_taceti\taceti.h
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	"sdl2.h"
+	"lista.h"
 
 1750025530 c:\users\felid\downloads\primo\tp_taceti\sdl2.h
 	<time.h>
@@ -6410,7 +6443,7 @@
 1750025530 source:c:\users\felid\downloads\primo\tp_taceti\lista.c
 	"lista.h"
 
-1750028540 source:c:\users\felid\downloads\primo\tp_taceti\main.c
+1750090899 source:c:\users\felid\downloads\primo\tp_taceti\main.c
 	"sdl2.h"
 	"taceti.h"
 	<SDL2/SDL.h>
@@ -6422,9 +6455,9 @@
 	"config.h"
 	"arbol.h"
 
-1750029342 source:c:\users\felid\downloads\primo\tp_taceti\sdl2.c
+1750087613 source:c:\users\felid\downloads\primo\tp_taceti\sdl2.c
 	"sdl2.h"
 
-1750025530 source:c:\users\felid\downloads\primo\tp_taceti\taceti.c
+1750100856 source:c:\users\felid\downloads\primo\tp_taceti\taceti.c
 	"taceti.h"
 

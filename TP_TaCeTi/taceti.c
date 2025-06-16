@@ -1,4 +1,5 @@
 #include "taceti.h"
+
 void inicializarMatriz(int** mat, int cf)
 {
     int i, j;
@@ -52,8 +53,6 @@ void matrizDestruir(void** mat,int filas)
     }
     free(mat);
 }
-
-
 
 void jugarMaquina(int** mat, int cf)
 {
@@ -121,7 +120,6 @@ int esEmpate(int** mat)
     return 1;
 }
 
-
 int verificar(int ganador, int** mat)
 {
     int done = 0;
@@ -146,5 +144,120 @@ int verificar(int ganador, int** mat)
 void mostrarJugador(void *dato)
 {
     jugador *nombre = (jugador *)dato;
-    printf("Nombre: %s %d\n", nombre->nombre, nombre->puntaje);
+    printf("Nombre: %s\tPuntaje: %d\n", nombre->nombre, nombre->puntaje);
+}
+
+int encontrarMaximoPuntaje(tLista *listaJugadores)
+{
+    if (listaVacia(listaJugadores)) {
+        return 0;
+    }
+
+    int maxPuntaje = 0;
+    tNodo* actual = *listaJugadores;
+
+    while (actual != NULL)
+    {
+        jugador* jug = (jugador*)actual->dato;
+        if (jug->puntaje > maxPuntaje)
+        {
+            maxPuntaje = jug->puntaje;
+        }
+        actual = actual->sig;
+    }
+    return maxPuntaje;
+}
+
+FILE* headerArchivo(FILE* archivo)
+{
+    time_t t;
+    struct tm *tm_info;
+    char nombreArchivo[30];
+
+    time(&t);
+    tm_info = localtime(&t);
+    strftime(nombreArchivo, sizeof(nombreArchivo), "%Y-%m-%d-%H-%M.txt", tm_info);
+
+    archivo = fopen(nombreArchivo, "w");
+    if (archivo == NULL)
+    {
+        fprintf(stderr, "Error: No se pudo crear el archivo de informe '%s'.\n", nombreArchivo);
+        return 0;
+    }
+
+    fprintf(archivo, "========================================\n");
+    fprintf(archivo, "    INFORME DE RESULTADOS - Ta-Ce-Ti\n");
+    fprintf(archivo, "========================================\n\n");
+    return archivo;
+}
+
+void cargarInforme(FILE *informe, jugador jugActual, int** matriz, unsigned char estadoJuego) {
+    if (informe == NULL) {
+        printf("Error: El puntero al archivo es NULL. No se pudo escribir el informe.\n");
+        return;
+    }
+
+    fprintf(informe, "JUGADOR: %s\n", jugActual.nombre);
+    fprintf(informe, "-TABLERO:\n");
+    for (int i = 0; i < 3; i++) {
+        fprintf(informe, "   "); // Para indentar el tablero
+        for (int j = 0; j < 3; j++) {
+            fprintf(informe, "%d ", matriz[i][j]);
+        }
+        fprintf(informe, "\n");
+    }
+
+    if(estadoJuego == 1)
+    {
+        fprintf(informe, "-GANADOR : \"%s\"\n", jugActual.nombre);
+        fprintf(informe, "-PUNTAJE: 3\n");
+    }
+    else if(estadoJuego == 3)
+    {
+        fprintf(informe, "-EMPATE\n");
+        fprintf(informe, "-PUNTAJE: 2\n");
+    }
+    else
+    {
+        fprintf(informe, "-GANO LA MAQUINA\n");
+        fprintf(informe, "-PUNTAJE: -1\n");
+    }
+    fprintf(informe, "\n"); // Línea en blanco para separar entradas en el informe
+}
+
+void footerArchivo(tLista *l, FILE* archivo)
+{
+    fprintf(archivo, "--- PUNTAJE TOTAL POR JUGADOR ---\n");
+    if (listaVacia(l))
+        fprintf(archivo, "No hay datos de jugadores para mostrar.\n");
+    else
+    {
+        tNodo* actual = *l;
+        while (actual != NULL)
+        {
+            jugador* jug = (jugador*)actual->dato;
+            fprintf(archivo, " > Jugador: %s\n", jug->nombre);
+            fprintf(archivo, "   Puntaje Final: %d\n\n", jug->puntaje);
+            actual = actual->sig;
+        }
+    }
+
+    fprintf(archivo, "\n--- RESULTADO FINAL ---\n");
+    int maxPuntaje = encontrarMaximoPuntaje(l);
+    fprintf(archivo, "El mayor puntaje obtenido fue: %d\n\n", maxPuntaje);
+    fprintf(archivo, "Jugador(es) con el mayor puntaje:\n");
+
+    //recorro de nuevo para obtener el mayor puntaje
+    tNodo* actual = *l;
+    while (actual != NULL)
+    {
+        jugador* jug = (jugador*)actual->dato;
+        if (jug->puntaje == maxPuntaje)
+        {
+            fprintf(archivo, "   - %s\n", jug->nombre);
+        }
+        actual = actual->sig;
+    }
+
+    fclose(archivo);
 }

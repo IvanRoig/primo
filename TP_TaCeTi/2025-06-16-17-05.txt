@@ -1,0 +1,30 @@
+========================================
+    INFORME DE RESULTADOS - Ta-Ce-Ti
+========================================
+
+JUGADOR: juancito
+-TABLERO:
+   2 1 1 
+   2 1 2 
+   1 2 1 
+-GANADOR : "juancito"
+-PUNTAJE: 3
+
+JUGADOR: juancito
+-TABLERO:
+   1 2 1 
+   2 1 2 
+   1 2 1 
+-GANADOR : "juancito"
+-PUNTAJE: 3
+
+--- PUNTAJE TOTAL POR JUGADOR ---
+ > Jugador: juancito
+   Puntaje Final: 6
+
+
+--- RESULTADO FINAL ---
+El mayor puntaje obtenido fue: 6
+
+Jugador(es) con el mayor puntaje:
+   - juancito

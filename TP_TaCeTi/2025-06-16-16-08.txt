@@ -1,0 +1,49 @@
+========================================
+    INFORME DE RESULTADOS - Ta-Ce-Ti
+========================================
+
+JUGADOR: P
+-TABLERO:
+   1 2 1 
+   1 2 2 
+   2 1 1 
+-EMPATE
+-PUNTAJE: 2
+
+JUGADOR: P
+-TABLERO:
+   2 2 1 
+   1 1 2 
+   2 2 1 
+-EMPATE
+-PUNTAJE: 2
+
+JUGADOR: M
+-TABLERO:
+   2 2 2 
+   0 0 1 
+   0 1 0 
+-GANO LA MAQUINA
+-PUNTAJE: -1
+
+JUGADOR: M
+-TABLERO:
+   2 2 2 
+   1 1 0 
+   0 0 0 
+-GANO LA MAQUINA
+-PUNTAJE: -1
+
+--- PUNTAJE TOTAL POR JUGADOR ---
+ > Jugador: P
+   Puntaje Final: 4
+
+ > Jugador: M
+   Puntaje Final: -2
+
+
+--- RESULTADO FINAL ---
+El mayor puntaje obtenido fue: 4
+
+Jugador(es) con el mayor puntaje:
+   - P

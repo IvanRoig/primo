@@ -1,0 +1,11 @@
+========================================
+    INFORME DE RESULTADOS - Ta-Ce-Ti
+========================================
+
+--- PUNTAJE TOTAL POR JUGADOR ---
+No hay datos de jugadores para mostrar.
+
+--- RESULTADO FINAL ---
+El mayor puntaje obtenido fue: 0
+
+Jugador(es) con el mayor puntaje:

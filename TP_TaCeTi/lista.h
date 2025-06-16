@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "taceti.h"
+//#include "taceti.h"
 
 typedef struct sNodo
 {

@@ -1,0 +1,30 @@
+========================================
+    INFORME DE RESULTADOS - Ta-Ce-Ti
+========================================
+
+JUGADOR: nicolas
+-TABLERO:
+   1 1 1 
+   0 0 2 
+   2 0 2 
+-GANADOR : "nicolas"
+-PUNTAJE: 3
+
+JUGADOR: nicolas
+-TABLERO:
+   2 1 1 
+   2 1 1 
+   1 2 2 
+-GANADOR : "nicolas"
+-PUNTAJE: 3
+
+--- PUNTAJE TOTAL POR JUGADOR ---
+ > Jugador: nicolas
+   Puntaje Final: 6
+
+
+--- RESULTADO FINAL ---
+El mayor puntaje obtenido fue: 6
+
+Jugador(es) con el mayor puntaje:
+   - nicolas

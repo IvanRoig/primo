@@ -57,10 +57,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="config.h" />
-		<Unit filename="ini.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="ini.h" />
 		<Unit filename="lista.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -1,0 +1,30 @@
+========================================
+    INFORME DE RESULTADOS - Ta-Ce-Ti
+========================================
+
+JUGADOR: gsegionsdigds
+-TABLERO:
+   2 0 1 
+   0 1 0 
+   1 0 2 
+-GANADOR : "gsegionsdigds"
+-PUNTAJE: 3
+
+JUGADOR: gsegionsdigds
+-TABLERO:
+   1 2 2 
+   1 1 1 
+   2 1 2 
+-GANADOR : "gsegionsdigds"
+-PUNTAJE: 3
+
+--- PUNTAJE TOTAL POR JUGADOR ---
+ > Jugador: gsegionsdigds
+   Puntaje Final: 6
+
+
+--- RESULTADO FINAL ---
+El mayor puntaje obtenido fue: 6
+
+Jugador(es) con el mayor puntaje:
+   - gsegionsdigds

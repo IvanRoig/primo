@@ -1,6 +1,4 @@
 #include "lista.h"
-
-
 void crearLista(tLista *l)
 {
     *l = NULL;
@@ -149,14 +147,11 @@ int sacarEnPos(tLista *l, void *dato, unsigned tam, unsigned pos)
         prev = prev->sig;
     }
     tNodo *elim = prev->sig;
-    if (!elim) return 0;
+    if (!elim)
+        return 0;
     prev->sig = elim->sig;
     memcpy(dato, elim->dato, tam);
     free(elim->dato);
     free(elim);
     return 1;
 }
-
-
-
-

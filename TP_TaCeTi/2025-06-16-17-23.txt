@@ -1,0 +1,30 @@
+========================================
+    INFORME DE RESULTADOS - Ta-Ce-Ti
+========================================
+
+JUGADOR: ivan
+-TABLERO:
+   1 1 2 
+   2 1 2 
+   1 2 2 
+-GANO LA MAQUINA
+-PUNTAJE: -1
+
+JUGADOR: ivan
+-TABLERO:
+   0 0 1 
+   2 1 0 
+   1 2 2 
+-GANADOR : "ivan"
+-PUNTAJE: 3
+
+--- PUNTAJE TOTAL POR JUGADOR ---
+ > Jugador: ivan
+   Puntaje Final: 2
+
+
+--- RESULTADO FINAL ---
+El mayor puntaje obtenido fue: 2
+
+Jugador(es) con el mayor puntaje:
+   - ivan

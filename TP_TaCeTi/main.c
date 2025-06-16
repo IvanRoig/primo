@@ -12,13 +12,12 @@
 int main(int argc, char *argv[])
 {
     tConfig cfg;
-    if (!leerConfig("config.ini", &cfg))
+    if (!leerConfig("config.txt", &cfg))
     {
-        fprintf(stderr, "Error cargando config.ini\n");
+        fprintf(stderr, "Error cargando config.txt\n");
         return 1;
     }
     printf("Modo: %s  Partidas/PJ: %d\n", cfg.modo, cfg.partidas);
-
     jugador jug;
     tLista listaJugadores;
     crearLista(&listaJugadores);
@@ -99,6 +98,7 @@ int main(int argc, char *argv[])
 
             tLista listaRanking;
             crearLista(&listaRanking);
+            FILE * informe = headerArchivo(informe);
 
             jugador jugActual;
             while (sacarPrimero(&listaTemp, &jugActual, sizeof(jugActual)))
@@ -108,7 +108,6 @@ int main(int argc, char *argv[])
                 {
                     printf("\n--- Partida %d de %s ---\n", p + 1, jugActual.nombre);
                     inicializarMatriz(mat, 3);
-                    //inicializarTablero(3, tableroRect, renderer);
                     renderizarTablero(mat, 3, tableroRect, renderer);
 
                     turno = rand() % 2;
@@ -182,9 +181,11 @@ int main(int argc, char *argv[])
                         SDL_Delay(16);
                     }
 
+                    SDL_Delay(500); // Un poco de delay para que se llegue a ver quien ganó
                     if (done == 1)      jugActual.puntaje += 3;
                     else if (done == 2) jugActual.puntaje -= 1;
                     else                jugActual.puntaje += 2;
+                    cargarInforme(informe, jugActual, mat, done);
                 }
 
                 ponerAlFinal(&listaRanking, &jugActual, sizeof(jugActual));
@@ -192,14 +193,14 @@ int main(int argc, char *argv[])
 
             listaJugadores = listaRanking;
             mostrarLista(&listaJugadores, mostrarJugador);
-            enviarResultados(&listaJugadores);
-
+            enviarResultados(&listaJugadores, &cfg);
+            footerArchivo(&listaJugadores, informe);
             vaciarLista(&listaJugadores);
             break;
         }
 
         case 2:
-            hacerGET();
+            hacerGET(&cfg);
             break;
 
         case 3:
@@ -212,7 +213,6 @@ int main(int argc, char *argv[])
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-    mostrarMatriz(mat, 3, 3);
     matrizDestruir((void**)mat, 3);
     return 0;
 }

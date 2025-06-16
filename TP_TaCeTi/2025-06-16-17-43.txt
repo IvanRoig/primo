@@ -1,0 +1,33 @@
+========================================
+    INFORME DE RESULTADOS - Ta-Ce-Ti
+========================================
+
+JUGADOR: franco
+-TABLERO:
+   2 1 1 
+   1 2 2 
+   2 1 1 
+-EMPATE
+-PUNTAJE: 2
+
+JUGADOR: ivan
+-TABLERO:
+   0 2 1 
+   0 1 0 
+   1 0 2 
+-GANADOR : "ivan"
+-PUNTAJE: 3
+
+--- PUNTAJE TOTAL POR JUGADOR ---
+ > Jugador: franco
+   Puntaje Final: 2
+
+ > Jugador: ivan
+   Puntaje Final: 3
+
+
+--- RESULTADO FINAL ---
+El mayor puntaje obtenido fue: 3
+
+Jugador(es) con el mayor puntaje:
+   - ivan

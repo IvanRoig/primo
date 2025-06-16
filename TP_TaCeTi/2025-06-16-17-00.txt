@@ -1,0 +1,88 @@
+========================================
+    INFORME DE RESULTADOS - Ta-Ce-Ti
+========================================
+
+JUGADOR: franco
+-TABLERO:
+   2 2 1 
+   1 1 2 
+   2 1 1 
+-EMPATE
+-PUNTAJE: 2
+
+JUGADOR: franco
+-TABLERO:
+   2 1 2 
+   1 1 2 
+   1 2 1 
+-EMPATE
+-PUNTAJE: 2
+
+JUGADOR: ivan
+-TABLERO:
+   1 1 2 
+   2 1 1 
+   1 2 2 
+-EMPATE
+-PUNTAJE: 2
+
+JUGADOR: ivan
+-TABLERO:
+   2 2 1 
+   1 1 2 
+   2 1 2 
+-EMPATE
+-PUNTAJE: 2
+
+JUGADOR: roig
+-TABLERO:
+   1 1 2 
+   2 2 1 
+   2 0 1 
+-GANO LA MAQUINA
+-PUNTAJE: -1
+
+JUGADOR: roig
+-TABLERO:
+   2 1 2 
+   1 1 2 
+   1 2 1 
+-EMPATE
+-PUNTAJE: 2
+
+JUGADOR: nicolas
+-TABLERO:
+   2 1 2 
+   2 1 1 
+   1 2 1 
+-EMPATE
+-PUNTAJE: 2
+
+JUGADOR: nicolas
+-TABLERO:
+   1 1 2 
+   2 2 1 
+   2 1 0 
+-GANO LA MAQUINA
+-PUNTAJE: -1
+
+--- PUNTAJE TOTAL POR JUGADOR ---
+ > Jugador: franco
+   Puntaje Final: 4
+
+ > Jugador: ivan
+   Puntaje Final: 4
+
+ > Jugador: roig
+   Puntaje Final: 1
+
+ > Jugador: nicolas
+   Puntaje Final: 1
+
+
+--- RESULTADO FINAL ---
+El mayor puntaje obtenido fue: 4
+
+Jugador(es) con el mayor puntaje:
+   - franco
+   - ivan
